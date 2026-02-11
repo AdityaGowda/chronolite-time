@@ -4,7 +4,7 @@
   "description": "Lightweight natural language time parser for JavaScript",
   "main": "src/index.js",
   "type": "module",
-  "keywords": [
+   "keywords": [
     "time",
     "date",
     "parser",
@@ -14,9 +14,14 @@
     "duration",
     "relative-date",
     "scheduler",
-    "human-time"
+    "human-time",
+    "time-parser",
+    "date-parser",
+    "javascript",
+    "human-readable",
+    "automation"
   ],
-  "author": "Adithya Gowda",
+  "author": "Adithya M R",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +31,4 @@
     "url": "https://github.com/AdityaGowda/ChronoLite/issues"
   },
   "homepage": "https://github.com/AdityaGowda/ChronoLite#readme",
-  "scripts": {
-    "test": "node tests/run.js"
-  }
 }
