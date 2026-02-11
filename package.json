@@ -5,12 +5,16 @@
   "main": "src/index.js",
   "type": "module",
   "keywords": [
-    "natural language time parser",
-    "datetime parser",
-    "human readable time",
-    "javascript time parser",
-    "duration parser",
-    "relative date parser"
+    "time",
+    "date",
+    "parser",
+    "nlp",
+    "natural-language",
+    "datetime",
+    "duration",
+    "relative-date",
+    "scheduler",
+    "human-time"
   ],
   "author": "Adithya Gowda",
   "license": "MIT",
@@ -23,6 +27,6 @@
   },
   "homepage": "https://github.com/AdityaGowda/ChronoLite#readme",
   "scripts": {
-    "test": "node tests/duration.test.js"
+    "test": "node tests/run.js"
   }
 }
