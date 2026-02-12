@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>chronolite-time Playground</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+         * { box-sizing: border-box; }
+         body {
+         margin: 0;
+         font-family: system-ui, sans-serif;
+         background: #020617;
+         color: #e5e7eb;
+         }
+         .app {
+         display: flex;
+         min-height: 100vh;
+         }
+         .sidebar {
+         width: 260px;
+         background: #020617;
+         border-right: 1px solid #1f2933;
+         padding: 20px;
+         overflow-y: auto;
+         }
+         .sidebar h3 {
+         margin-top: 0;
+         font-size: 15px;
+         color: #93c5fd;
+         }
+         .sidebar ul {
+         padding-left: 16px;
+         font-size: 13px;
+         color: #9ca3af;
+         }
+         .sidebar li {
+         margin-bottom: 4px;
+         }
+         /* MAIN */
+         .main {
+         flex: 1;
+         padding: 40px 30px;
+         max-width: 900px;
+         }
+         h1 {
+         margin-top: 0;
+         }
+         .card {
+         background: #020617;
+         border: 1px solid #1f2933;
+         border-radius: 12px;
+         padding: 20px;
+         }
+         input {
+         width: 100%;
+         padding: 14px;
+         font-size: 16px;
+         border-radius: 8px;
+         border: 1px solid #334155;
+         background: #020617;
+         color: white;
+         }
+         button {
+         margin-top: 10px;
+         padding: 10px 16px;
+         border-radius: 8px;
+         border: none;
+         background: #2563eb;
+         color: white;
+         cursor: pointer;
+         }
+         button:hover {
+         background: #1d4ed8;
+         }
+         pre {
+         margin-top: 15px;
+         background: #020617;
+         border: 1px solid #1f2933;
+         border-radius: 8px;
+         padding: 12px;
+         font-size: 13px;
+         color: #22c55e;
+         }
+         .examples {
+         margin-top: 15px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 6px;
+         }
+         .example {
+         border: 1px solid #1f2933;
+         padding: 6px 10px;
+         border-radius: 6px;
+         font-size: 12px;
+         cursor: pointer;
+         color: #93c5fd;
+         }
+         .example:hover {
+         border-color: #2563eb;
+         }
+         footer {
+         margin-top: 30px;
+         font-size: 12px;
+         color: #64748b;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="app">
+         <!-- SIDEBAR -->
+         <div class="sidebar">
+            <p style="font-size: 12px; color: #22c55e; margin-bottom: 20px;"> All keywords and formats listed below are fully supported.</p>
+            <h3>⏳ Duration Units</h3>
+            <ul>
+               <li><strong>Full:</strong> second, seconds, minute, minutes, hour, hours, day, days, week, weeks, month, months, year, years</li>
+               <li><strong>Short:</strong> sec, secs, min, mins, hr, hrs, d, w, mo, y</li>
+               <li><strong>Compact:</strong> h, m, s (e.g. 5h, 10m)</li>
+               <li><strong>Combinations:</strong></li>
+               <li>X hours X minutes</li>
+               <li>Xh Xm</li>
+               <li>X days X hours</li>
+               <li>X weeks X days</li>
+            </ul>
+            <h3>🗓 Relative Keywords</h3>
+            <ul>
+               <li>today</li>
+               <li>tomorrow</li>
+               <li>yesterday</li>
+               <li>now</li>
+               <li>day after tomorrow</li>
+            </ul>
+            <h3>📆 Relative Ranges</h3>
+            <ul>
+               <li>this week</li>
+               <li>next week</li>
+               <li>this month</li>
+               <li>next month</li>
+               <li>this year</li>
+               <li>next year</li>
+            </ul>
+            <h3>⏱ Relative Expressions</h3>
+            <ul>
+               <li>in X seconds</li>
+               <li>in X minutes</li>
+               <li>in X hours</li>
+               <li>in X days</li>
+               <li>in X weeks</li>
+            </ul>
+            <h3>📅 Weekdays (Full)</h3>
+            <ul>
+               <li>monday</li>
+               <li>tuesday</li>
+               <li>wednesday</li>
+               <li>thursday</li>
+               <li>friday</li>
+               <li>saturday</li>
+               <li>sunday</li>
+            </ul>
+            <h3>📅 Weekdays (Short)</h3>
+            <ul>
+               <li>mon</li>
+               <li>tue</li>
+               <li>wed</li>
+               <li>thu</li>
+               <li>fri</li>
+               <li>sat</li>
+               <li>sun</li>
+            </ul>
+            <h3>🗓 Weekday Modifiers</h3>
+            <ul>
+               <li>next monday</li>
+               <li>this monday</li>
+               <li>next monday at 5pm</li>
+               <li>this monday at 10:30am</li>
+            </ul>
+            <h3>📅 Absolute Date Formats</h3>
+            <ul>
+               <li><strong>ISO:</strong> YYYY-MM-DD (e.g. 2026-03-15)</li>
+               <li><strong>Slash/Dash:</strong> DD/MM/YYYY or DD-MM-YYYY</li>
+            </ul>
+            <h3>📆 Month Names (Short)</h3>
+            <ul>
+               <li>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</li>
+            </ul>
+            <h3>📆 Month Names (Full)</h3>
+            <ul>
+               <li>January, February, March, April, May, June, July, August, September, October, November, December</li>
+            </ul>
+            <h3>📅 Month-Date Formats</h3>
+            <ul>
+               <li>Jan 5 2026</li>
+               <li>January 5 2026</li>
+            </ul>
+            <h3>🕒 Time Formats</h3>
+            <ul>
+               <li>at 5pm</li>
+               <li>at 10:30am</li>
+               <li>tomorrow at 5pm</li>
+            </ul>
+            <h3>🚫 Unsupported Examples</h3>
+            <ul>
+               <li>31/02/2026 (JS rollover rejected)</li>
+               <li>2026-02-31</li>
+               <li>15/13/2026</li>
+               <li>yesterday tomorrow</li>
+               <li>abc</li>
+            </ul>
+         </div>
+         <!-- MAIN -->
+         <div class="main">
+            <h1>chronolite-time Playground </h1>
+            <p>Type natural time expressions below.</p>
+            <div class="card">
+               <input id="input" placeholder="e.g. in 2 hours, tomorrow at 5pm" />
+               <button>Parse</button>
+               <div class="examples">
+                  <div class="example">in 2 hours</div>
+                  <div class="example">tomorrow at 5pm</div>
+                  <div class="example">next monday</div>
+                  <div class="example">1 hour and 30 minutes</div>
+                  <div class="example">this week</div>
+                  <div class="example">Feb 20 2026</div>
+               </div>
+               <pre id="output">// Result here</pre>
+            </div>
+            <footer>
+               Powered by chronolite-time • Adithya Gowda
+            </footer>
+         </div>
+      </div>
+      <script type="module" src="index.js"></script>
+   </body>
+</html>

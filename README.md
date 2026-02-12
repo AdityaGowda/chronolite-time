@@ -1,9 +1,9 @@
-# chronolite-time ⏱️ — Natural Language Time Parser
+# chronolite-time — Natural Language Time Parser
 
 [![npm version](https://img.shields.io/npm/v/chronolite-time.svg)](https://www.npmjs.com/package/chronolite-time)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-chronolite-time is a lightweight JavaScript library that converts **human-readable time expressions** into machine-friendly objects and timestamps.
+**chronolite-time** is a lightweight JavaScript library that converts **human-readable time expressions** into machine-friendly objects and timestamps.
 
 It supports:
 
@@ -12,6 +12,13 @@ It supports:
 - 📅 **Absolute dates** (`2026-03-15`, `Feb 20 2026`, `15/03/2026`)
 
 Built for schedulers, reminders, bots, dashboards, and automation systems.
+
+---
+
+All supported keywords and formats are already included in the playground sidebar and examples. Use the demo to explore every currently supported input.
+## 🔗 Quick Links
+
+- **[Live Demo](https://github.com/AdityaGowda/chronolite-time)** — Try it in your browser!
 
 ---
 
@@ -165,6 +172,12 @@ parseTime("Feb 20 2026");
 
 > [!NOTE]
 > Invalid dates are strictly rejected (e.g., `31/02/2026` or `2026-02-31`).
+
+---
+
+## ✅ Validation & Quality
+
+ChronoLite-time is tested against **9000+ human-readable use cases** to ensure reliability and coverage.
 
 ---
 

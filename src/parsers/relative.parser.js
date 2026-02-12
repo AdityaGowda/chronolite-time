@@ -1,5 +1,5 @@
 import { buildDate, buildMonthRange, buildWeekRange, buildYearRange } from "../helper/helper.js";
-import { getInRegex,getTimeRegex,getWeekdayRegex } from "../utils/regex.js";
+import { getInOrAtRegex, getInOrAtWithTimeRegex, getTimeRegx, getTomorrowAndDayAfterTomorrowRegex, getWeekdayRegex } from "../utils/regex.js";
 
 const WEEKDAYS = {
   sunday: 0,
@@ -13,10 +13,18 @@ const WEEKDAYS = {
 
 const UNIT_SETTERS = {
   second: (d, v) => d.setSeconds(d.getSeconds() + v),
+  seconds: (d, v) => d.setSeconds(d.getSeconds() + v),
+  sec: (d, v) => d.setSeconds(d.getSeconds() + v),
+  s: (d, v) => d.setSeconds(d.getSeconds() + v),
   minute: (d, v) => d.setMinutes(d.getMinutes() + v),
+  min: (d, v) => d.setMinutes(d.getMinutes() + v),
   hour: (d, v) => d.setHours(d.getHours() + v),
+  hours: (d, v) => d.setHours(d.getHours() + v),
+  hr: (d, v) => d.setHours(d.getHours() + v),
   day: (d, v) => d.setDate(d.getDate() + v),
+  days: (d, v) => d.setDate(d.getDate() + v),
   week: (d, v) => d.setDate(d.getDate() + v * 7),
+  weeks: (d, v) => d.setDate(d.getDate() + v * 7),
   month: (d, v) => d.setMonth(d.getMonth() + v),
   year: (d, v) => d.setFullYear(d.getFullYear() + v)
 };
@@ -27,14 +35,21 @@ export function parseRelative(text) {
   const input = text.toLowerCase().trim();
   const now = new Date();
 
-  const timeMatch = input.match(getTimeRegex());
-
-  // -------- keywords --------
+  const timeMatch = input.match(getTimeRegx());
   const keywordMap = {
     today: 0,
     tomorrow: 1,
-    yesterday: -1
+    yesterday: -1,
+    now: 0,
+    "day after tomorrow": 2
   };
+
+  const tomorrowAndDayAfterTomorrowMatch = input.match(getTomorrowAndDayAfterTomorrowRegex());
+  if (tomorrowAndDayAfterTomorrowMatch) {
+    const d = new Date();
+    d.setDate(d.getDate() + keywordMap[tomorrowAndDayAfterTomorrowMatch[0]]);
+    return buildDate(d, timeMatch);
+  }
 
   if (keywordMap[input] !== undefined) {
     const d = new Date(now);
@@ -43,9 +58,9 @@ export function parseRelative(text) {
   }
 
   // -------- in X units --------
-  const inMatch = input.match(getInRegex());
-
+  const inMatch = input.match(getInOrAtRegex());
   if (inMatch) {
+
     const value = Number(inMatch[1]);
     const unit = inMatch[2].replace(/s$/, "");
 
@@ -58,6 +73,10 @@ export function parseRelative(text) {
     return buildDate(d, timeMatch);
   }
 
+  const inOrAtWithTimeMatch = input.match(getInOrAtWithTimeRegex());
+  if (inOrAtWithTimeMatch) {
+    return buildDate(now, inOrAtWithTimeMatch)
+  }
   // -------- ranges --------
 
   const ranges = {

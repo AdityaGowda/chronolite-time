@@ -5,7 +5,8 @@ export function parseDuration(text) {
 
   if (typeof text !== "string") return null;
   let totalMilliseconds = 0;
-  const matches = text.matchAll(getDurationRegex());
+  const matches = text.matchAll(getDurationRegex()) 
+
 
   for (const match of matches) {
     const value = parseFloat(match[2]);
