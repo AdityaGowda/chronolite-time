@@ -15,10 +15,9 @@ Built for schedulers, reminders, bots, dashboards, and automation systems.
 
 ---
 
-All supported keywords and formats are already included in the playground sidebar and examples. Use the demo to explore every currently supported input.
 ## 🔗 Quick Links
 
-- **[Live Demo](https://github.com/AdityaGowda/chronolite-time)** — Try it in your browser!
+- **[Live Demo](https://adityagowda.github.io/chronolite-time/)** — Try it in your browser!
 
 ---
 
@@ -79,6 +78,7 @@ const { parseTime } = await import("chronolite-time");
 chronolite-time returns different objects depending on the input type:
 
 ### Duration
+
 ```javascript
 {
   type: "duration",
@@ -87,6 +87,7 @@ chronolite-time returns different objects depending on the input type:
 ```
 
 ### Relative / Absolute
+
 ```javascript
 {
   type: "relative" | "absolute",
@@ -96,7 +97,9 @@ chronolite-time returns different objects depending on the input type:
 ```
 
 ### Ranges
+
 Ranges like `this week` or `next month` return:
+
 ```javascript
 {
   type: "relative-range",
@@ -110,10 +113,13 @@ Ranges like `this week` or `next month` return:
 ## 🧪 Examples
 
 ### Duration
+
 ```javascript
 parseTime("1 hour and 30 minutes");
 ```
+
 **Output:**
+
 ```json
 {
   "type": "duration",
@@ -122,10 +128,13 @@ parseTime("1 hour and 30 minutes");
 ```
 
 ### Relative
+
 ```javascript
 parseTime("in 2 hours");
 ```
+
 **Output (example):**
+
 ```json
 {
   "type": "relative",
@@ -135,10 +144,13 @@ parseTime("in 2 hours");
 ```
 
 ### Absolute
+
 ```javascript
 parseTime("Feb 20 2026");
 ```
+
 **Output:**
+
 ```json
 {
   "type": "absolute",
@@ -152,12 +164,14 @@ parseTime("Feb 20 2026");
 ## 🧠 Supported Formats
 
 ### Durations
+
 - `3h`, `3 hours`
 - `2 hours`
 - `1.5 days`
 - `1 hour and 30 minutes`
 
 ### Relative
+
 - `today`, `tomorrow`, `yesterday`
 - `in 3 hours`
 - `next monday`
@@ -166,6 +180,7 @@ parseTime("Feb 20 2026");
 - `tomorrow at 5pm`
 
 ### Absolute
+
 - `2026-03-15`
 - `15/03/2026`
 - `Feb 20 2026`
