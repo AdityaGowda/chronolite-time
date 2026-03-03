@@ -1,6 +1,6 @@
 {
   "name": "chronolite-time",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Lightweight, pattern-based natural language time parser for human-readable expressions with zero dependencies.",
   "main": "src/index.js",
   "type": "module",
