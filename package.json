@@ -4,6 +4,10 @@
   "description": "Lightweight, pattern-based natural language time parser for human-readable expressions with zero dependencies.",
   "main": "src/index.js",
   "type": "module",
+  "scripts": {
+    "test": "node test.js",
+    "playground": "npx serve ."
+  },
   "files": [
     "src",
     "README.md",
